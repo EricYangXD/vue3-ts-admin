@@ -1,4 +1,4 @@
-import { sentryVitePlugin } from "@sentry/vite-plugin";
+import { sentryVitePlugin } from '@sentry/vite-plugin'
 import path from 'path'
 import fs from 'fs'
 import { defineConfig } from 'vite'
@@ -88,56 +88,63 @@ export default defineConfig({
     }
   },
 
-  plugins: [// ViteCompression({
-  //   threshold: 20 * 1024, // 超过多少进行压缩
-  //   ext: '.gz',
-  //   algorithm: 'gzip'
-  // }),
-  // brotli(),
-  // 其他插件...
-  visualizer({
-    filename: './dist/stats.html', // Path to output file
-    // open: true, // Open the report automatically after build
-    gzipSize: true, // Show gzip compressed size
-    brotliSize: true // Show brotli compressed size
-  }), vue(), vueJsx(), UnoCSS(), AutoImport({
-    // api
-    imports: ['vue', 'vue-router', 'pinia'],
-    resolvers: [ElementPlusResolver()],
-    eslintrc: { enabled: true } // 给eslint生产的配置 只需要一次,
-  }), Components({
-    resolvers: [
-      // 自动导入 Element Plus 组件
-      ElementPlusResolver()
-    ],
-    // 所有的组件可以自动加载
-    dirs: [
-      'src/components',
-      'src/layout/components',
-      'src/views/**/components'
-    ],
-    include: [/\.vue$/, /\.jsx$/]
-  }), // sentryVitePlugin({
-  //   org: 'birds', // 替换为你的 Sentry 组织名
-  //   project: 'vue3-app', // 替换为你的 Sentry 项目名
-  //   authToken:
-  //     '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', // 替换为你的 Sentry Auth Token
-  //   sourcemaps: {
-  //     assets: './dist/**' // 指定 Source Map 文件路径
-  //   },
-  //   release: {
-  //     name: process.env.npm_package_version || 'development', // 使用项目版本作为 release 名称
-  //     create: true // 自动创建 release
-  //   }
-  // }),
-  // sentryVitePlugin({
-  //   org: 'birds-gl',
-  //   project: 'vue3-app'
-  // })
-  ElementPlus({}), sentryVitePlugin({
-    org: "shanghai-china",
-    project: "vue3-ts-admin"
-  })],
+  plugins: [
+    // ViteCompression({
+    //   threshold: 20 * 1024, // 超过多少进行压缩
+    //   ext: '.gz',
+    //   algorithm: 'gzip'
+    // }),
+    // brotli(),
+    // 其他插件...
+    visualizer({
+      filename: './dist/stats.html', // Path to output file
+      // open: true, // Open the report automatically after build
+      gzipSize: true, // Show gzip compressed size
+      brotliSize: true // Show brotli compressed size
+    }),
+    vue(),
+    vueJsx(),
+    UnoCSS(),
+    AutoImport({
+      // api
+      imports: ['vue', 'vue-router', 'pinia'],
+      resolvers: [ElementPlusResolver()],
+      eslintrc: { enabled: true } // 给eslint生产的配置 只需要一次,
+    }),
+    Components({
+      resolvers: [
+        // 自动导入 Element Plus 组件
+        ElementPlusResolver()
+      ],
+      // 所有的组件可以自动加载
+      dirs: [
+        'src/components',
+        'src/layout/components',
+        'src/views/**/components'
+      ],
+      include: [/\.vue$/, /\.jsx$/]
+    }), // sentryVitePlugin({
+    //   org: 'Devaju', // 替换为你的 Sentry 组织名
+    //   project: 'vue3-ts-admin', // 替换为你的 Sentry 项目名
+    //   authToken: '', // 替换为你的 Sentry Auth Token
+    //   sourcemaps: {
+    //     assets: './dist/**' // 指定 Source Map 文件路径
+    //   },
+    //   release: {
+    //     name: process.env.npm_package_version || 'development', // 使用项目版本作为 release 名称
+    //     create: true // 自动创建 release
+    //   }
+    // }),
+    // sentryVitePlugin({
+    //   org: 'Devaju',
+    //   project: 'vue3-ts-admin'
+    // })
+    ElementPlus({}),
+    sentryVitePlugin({
+      org: 'shanghai-china',
+      project: 'vue3-ts-admin'
+    })
+  ],
 
   base: './',
 
@@ -151,11 +158,10 @@ export default defineConfig({
         // rewrite: (path) => path.replace(/^\/dev-api/, '/api') // 可选：如果需要删除前缀
       }
     }
+  },
+  build: {
+    sourcemap: true
   }
-
-  // build: {
-  //   sourcemap: true
-  // }
 })
 
 // 每个文件都会被构建，chunk 数量多，同域名对资源加载数量有限制，chunk 数量多，导致同域名加载时间更长，每个限制一般是6个，后面的

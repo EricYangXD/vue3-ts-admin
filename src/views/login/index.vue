@@ -70,7 +70,7 @@ const { redirect, otherQuery } = useRouteQuery()
 const loginState = reactive({
   loginForm: {
     username: 'test-12',
-    password: '123456-1'
+    password: '123456-1' // default password
   },
   loginRules: {
     username: [{ required: true, trigger: 'blur', message: '请输入用户名' }],
