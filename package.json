@@ -17,7 +17,7 @@
     "@sentry/tracing": "^7.114.0",
     "@sentry/vue": "^8.47.0",
     "axios": "^1.7.7",
-    "element-plus": "^2.9.1",
+    "element-plus": "^2.11.0",
     "mitt": "^3.0.1",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
